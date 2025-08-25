@@ -38,10 +38,9 @@ Follow the instructions specific to your Debian-based or Fedora-based distributi
   ```
 
 - **Fedora (using `dnf`)**
-  ````bash
+  ```bash
   sudo dnf install -y npm nodejs ripgrep lazygit
-  ```:w
-  ````
+  ```
 
 #### For macOS 🍎
 
@@ -53,9 +52,9 @@ brew install node npm ripgrep lazygit
 
 To install this Neovim configuration, run the following command in your terminal. This command will:
 
-    Remove any existing ~/.config/nvim directory (ensuring a clean installation).
+    - Remove any existing ~/.config/nvim directory (ensuring a clean installation).
 
-    Clone this repository's contents directly into ~/.config/nvim.
+    - Clone this repository's contents directly into ~/.config/nvim.
 
 ```bash
 rm -rf ~/.config/nvim && git clone --depth 1 https://github.com/sthitapati/nvim-config-folder.git ~/.config/nvim
