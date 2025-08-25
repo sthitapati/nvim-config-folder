@@ -58,5 +58,4 @@ To install this Neovim configuration, run the following command in your terminal
 
 ```bash
 rm -rf ~/.config/nvim && git clone --depth 1 https://github.com/sthitapati/nvim-config-folder.git ~/.config/nvim
-
 ```
