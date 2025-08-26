@@ -4,7 +4,7 @@ This Neovim configuration is a personalized setup tailored to my development wor
 
 ---
 
-## ✨ Key Additional Features & Enhancements
+## ✨ Some Additional Features and Information
 
 - **LSP & Linting**: Integrated Language Server Protocol (LSP) and linting support for:
   - C
@@ -25,6 +25,7 @@ Before installing this configuration, you need to have the following installed o
 - **`nodejs`**
 - **`ripgrep`** (critical for `telescope.nvim` to function efficiently)
 - **`lazygit`**
+- And obviously don't forget to install neovim 😜
 
 #### For Linux 🐧
 
