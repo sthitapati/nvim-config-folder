@@ -1,27 +1,28 @@
 return {
-	"akinsho/toggleterm.nvim",
-	event = "VeryLazy",
-	version = "*",
-	cmd = "ToggleTerm",
-	config = function()
-		require("toggleterm").setup({
-			size = 15, -- Adjust the height of the terminal pane
-			-- open_mapping = [[<C-j>]], -- REMOVE OR COMMENT OUT THIS LINE
-			hide_numbers = true,
-			shade_filetypes = {},
-			shade_terminals = true,
-			shading_factor = 1,
-			start_in_insert = true,
-			insert_mappings = true,
-			persist_size = true,
-			direction = "horizontal",
-			close_on_exit = true,
-			shell = vim.o.shell,
-			terminals = {},
-		})
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    version = "*",
+    cmd = "ToggleTerm",
+    config = function()
+        require("toggleterm").setup({
+            size = 15,
+            hide_numbers = true,
+            shade_filetypes = {},
+            shade_terminals = true,
+            shading_factor = 1,
+            start_in_insert = true,
+            insert_mappings = true,
+            persist_size = true,
+            direction = "horizontal",
+            close_on_exit = true,
+            shell = vim.o.shell,
+            terminals = {},
+        })
 
-		-- Your keymaps for toggling the terminal with <leader>j will now work
-		vim.keymap.set("n", "<leader>j", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
-		vim.keymap.set("t", "<leader>j", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
-	end,
+        -- Toggle the terminal in Normal mode with <leader>j
+        vim.keymap.set("n", "<leader>j", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+
+        -- Use Ctrl + \ to toggle the terminal in Terminal mode
+        vim.keymap.set("t", "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
+    end,
 }
