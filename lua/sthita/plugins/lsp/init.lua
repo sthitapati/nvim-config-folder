@@ -15,9 +15,9 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "hrsh7th/cmp-nvim-lsp",          -- LSP source for nvim-cmp
+      "saghen/blink.cmp",               -- completion capabilities
       { "antosha417/nvim-lsp-file-operations", config = true }, -- LSP file operations
-      { "folke/neodev.nvim", opts = {} },                      -- Neovim development support
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },         -- Neovim development support
       { "nvim-telescope/telescope.nvim" },                      -- For LSP definitions/references keybindings
     },
     config = function()
@@ -28,9 +28,6 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
 
       local mason_tool_installer = require("mason-tool-installer")
-
-      -- import cmp-nvim-lsp plugin
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
       local keymap = vim.keymap -- for conciseness
 
@@ -83,14 +80,19 @@ return {
       })
 
       -- Used to enable autocompletion (assign to every lsp server config)
-      local capabilities = cmp_nvim_lsp.default_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- Change the Diagnostic symbols in the sign column (gutter)
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+        },
+      })
 
       -- Auto-install formatters and linters
       mason_tool_installer.setup({
@@ -116,8 +118,12 @@ return {
               settings = {
                 pyright = {
                   disableOrganizeImports = true,
-                  typeCheckingMode = "strict",
-                  reportMissingImports = true,
+                },
+                python = {
+                  analysis = {
+                    typeCheckingMode = "strict",
+                    reportMissingImports = true,
+                  },
                 },
               },
             })

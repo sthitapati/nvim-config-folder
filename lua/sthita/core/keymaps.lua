@@ -19,4 +19,17 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "go to next tab"})
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "go to previous tab"})
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab"})
 
+-- window maximizer (inline toggle)
+local maximized = false
+keymap.set("n", "<leader>sm", function()
+  if maximized then
+    vim.cmd("wincmd =")
+    maximized = false
+  else
+    vim.cmd("wincmd |")
+    vim.cmd("wincmd _")
+    maximized = true
+  end
+end, { desc = "Maximize/minimize a split" })
+
  
