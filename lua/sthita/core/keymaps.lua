@@ -19,6 +19,9 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "go to next tab"})
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "go to previous tab"})
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab"})
 
+-- theme switcher
+keymap.set("n", "<leader>th", "<cmd>Themery<CR>", { desc = "Open theme switcher" })
+
 -- window maximizer (inline toggle)
 local maximized = false
 keymap.set("n", "<leader>sm", function()

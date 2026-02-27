@@ -1,7 +1,7 @@
 return {
   {
     "folke/tokyonight.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
+    priority = 1000,
     config = function()
       local bg = "#011628"
       local bg_dark = "#011423"
@@ -33,8 +33,36 @@ return {
           colors.fg_sidebar = fg_dark
         end,
       })
-      -- load the colorscheme here
       vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
+  { "catppuccin/nvim", name = "catppuccin", lazy = true },
+  { "rebelot/kanagawa.nvim", lazy = true },
+  { "rose-pine/neovim", name = "rose-pine", lazy = true },
+  {
+    "zaldih/themery.nvim",
+    config = function()
+      require("themery").setup({
+        themes = {
+          { name = "Tokyo Night", colorscheme = "tokyonight" },
+          {
+            name = "Catppuccin Mocha",
+            colorscheme = "catppuccin-mocha",
+            before = [[require("catppuccin").setup({ flavour = "mocha" })]],
+          },
+          {
+            name = "Catppuccin Latte",
+            colorscheme = "catppuccin-latte",
+            before = [[require("catppuccin").setup({ flavour = "latte" })]],
+          },
+          { name = "Kanagawa Wave", colorscheme = "kanagawa-wave" },
+          { name = "Kanagawa Dragon", colorscheme = "kanagawa-dragon" },
+          { name = "Rose Pine", colorscheme = "rose-pine" },
+          { name = "Rose Pine Moon", colorscheme = "rose-pine-moon" },
+        },
+        livePreview = true,
+        themeConfigFile = vim.fn.stdpath("config") .. "/lua/sthita/theme.lua",
+      })
     end,
   },
 }
