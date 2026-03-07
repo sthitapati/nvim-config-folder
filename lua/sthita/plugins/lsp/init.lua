@@ -114,15 +114,40 @@ return {
           -- Configure pyright for Python
           ["pyright"] = function()
             lspconfig.pyright.setup({
+              root_dir = lspconfig.util.root_pattern("pyrightconfig.json", "pyproject.toml", ".git"),
               capabilities = capabilities,
+              before_init = function(_, config)
+                -- Read venvPath + venv from pyrightconfig.json and resolve pythonPath explicitly,
+                -- because pyright-langserver doesn't reliably apply venvPath/venv via LSP workspace settings.
+                local root = config.root_dir
+                if not root then return end
+                local pyright_cfg_path = root .. "/pyrightconfig.json"
+                local f = io.open(pyright_cfg_path, "r")
+                if not f then return end
+                local content = f:read("*a")
+                f:close()
+                local ok, pcfg = pcall(vim.json.decode, content)
+                if not ok then return end
+                local venv_path = pcfg.venvPath
+                local venv = pcfg.venv
+                if venv_path and venv then
+                  local python = venv_path .. "/" .. venv .. "/bin/python"
+                  if vim.fn.executable(python) == 1 then
+                    config.settings = config.settings or {}
+                    config.settings.python = config.settings.python or {}
+                    config.settings.python.pythonPath = python
+                  end
+                end
+              end,
               settings = {
                 pyright = {
                   disableOrganizeImports = true,
                 },
                 python = {
                   analysis = {
-                    typeCheckingMode = "strict",
+                    typeCheckingMode = "basic",
                     reportMissingImports = true,
+                    useLibraryCodeForTypes = true,
                   },
                 },
               },
