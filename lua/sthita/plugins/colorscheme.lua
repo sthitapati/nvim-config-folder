@@ -61,7 +61,6 @@ return {
           { name = "Rose Pine Moon", colorscheme = "rose-pine-moon" },
         },
         livePreview = true,
-        themeConfigFile = vim.fn.stdpath("config") .. "/lua/sthita/theme.lua",
       })
     end,
   },
