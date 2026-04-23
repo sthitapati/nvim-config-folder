@@ -29,7 +29,10 @@ Personal Neovim configuration. Design goals: **lightweight, fast, not bloated**.
         │   └── init.lua              # mason + lspconfig + mason-lspconfig
         │                             # + mason-tool-installer + neodev
         ├── treesitter.lua            # Treesitter (real config lives here)
-        ├── colorscheme.lua           # tokyonight (dark, customized)
+        ├── colorscheme.lua           # tokyonight (dark, customized) + themery.nvim theme
+        │                             # switcher; autocmd-based persistence saves selected
+        │                             # colorscheme to stdpath("data")/colorscheme.txt and
+        │                             # restores it on VimEnter (works on macOS + Linux)
         ├── telescope.lua             # Fuzzy finder + fzf-native
         ├── nvim-cmp.lua              # Completion engine + luasnip stack
         ├── lsp/init.lua              # LSP, mason, formatters
@@ -64,10 +67,11 @@ Personal Neovim configuration. Design goals: **lightweight, fast, not bloated**.
 | nvim-ts-autotag | Auto-close HTML tags | OK |
 | plenary.nvim | Lua utilities (dep) | OK |
 | vim-tmux-navigator | Tmux/split navigation | OK |
-| tokyonight.nvim | Colorscheme | OK |
-| catppuccin | Colorscheme (alt) | OK (lazy) |
-| kanagawa.nvim | Colorscheme (alt) | OK (lazy) |
-| rose-pine | Colorscheme (alt) | OK (lazy) |
+| tokyonight.nvim | Colorscheme (default, priority=1000) | OK |
+| catppuccin | Colorscheme (alt) | OK (Themery dep) |
+| kanagawa.nvim | Colorscheme (alt) | OK (Themery dep) |
+| rose-pine | Colorscheme (alt) | OK (Themery dep) |
+| themery.nvim | Theme switcher UI (`:Themery`) | OK |
 | dressing.nvim | Better input/select UI | OK |
 | which-key.nvim | Keymap guide | OK |
 | lualine.nvim | Statusline | OK |

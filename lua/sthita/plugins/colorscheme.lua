@@ -36,11 +36,13 @@ return {
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin", lazy = true },
-  { "rebelot/kanagawa.nvim", lazy = true },
-  { "rose-pine/neovim", name = "rose-pine", lazy = true },
   {
     "zaldih/themery.nvim",
+    dependencies = {
+      { "catppuccin/nvim", name = "catppuccin" },
+      { "rebelot/kanagawa.nvim" },
+      { "rose-pine/neovim", name = "rose-pine" },
+    },
     config = function()
       require("themery").setup({
         themes = {
@@ -61,6 +63,30 @@ return {
           { name = "Rose Pine Moon", colorscheme = "rose-pine-moon" },
         },
         livePreview = true,
+      })
+
+      local cs_file = vim.fn.stdpath("data") .. "/colorscheme.txt"
+      local initialized = false
+
+      vim.api.nvim_create_autocmd("VimEnter", {
+        once = true,
+        callback = function()
+          if vim.fn.filereadable(cs_file) == 1 then
+            local saved = vim.fn.readfile(cs_file)[1]
+            if saved and saved ~= "" then
+              pcall(vim.cmd, "colorscheme " .. saved)
+            end
+          end
+          initialized = true
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = function()
+          if initialized then
+            vim.fn.writefile({ vim.g.colors_name }, cs_file)
+          end
+        end,
       })
     end,
   },
