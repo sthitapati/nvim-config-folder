@@ -1,7 +1,7 @@
 # Neovim Config — User Manual
 
 > Personal config. Leader key: `<Space>`
-> Neovim 0.11+ · macOS · lazy.nvim plugin manager
+> Neovim 0.11+ · macOS / Linux · lazy.nvim plugin manager
 
 ---
 
@@ -40,7 +40,6 @@
 | **catppuccin** | `catppuccin/nvim` | Colorscheme (Mocha / Latte variants) |
 | **kanagawa.nvim** | `rebelot/kanagawa.nvim` | Colorscheme (Wave / Dragon variants) |
 | **rose-pine** | `rose-pine/neovim` | Colorscheme (Rose Pine / Moon variants) |
-| **themery.nvim** | `zaldih/themery.nvim` | Interactive theme switcher with live preview, persists selection |
 | **lualine.nvim** | `nvim-lualine/lualine.nvim` | Statusline with mode-color coding |
 | **bufferline.nvim** | `akinsho/bufferline.nvim` | Tab bar (tabs mode) |
 | **indent-blankline.nvim** | `lukas-reineke/indent-blankline.nvim` | Indent guide lines |
@@ -125,7 +124,6 @@
 |-----|------|--------|
 | `jk` | Insert | Exit insert mode (alternative to `<Esc>`) |
 | `<leader>nh` | Normal | Clear search highlights |
-| `<leader>th` | Normal | Open theme switcher (Themery) |
 
 ### Window Management
 
@@ -348,6 +346,16 @@
 |--------|-----------|
 | **eslint_d** | JS, TS, JSX, TSX, Svelte |
 | **pylint** | Python |
+
+### External Prerequisites
+
+| Tool | Install | Purpose |
+|------|---------|---------|
+| **ripgrep** | `brew install ripgrep` / `apt install ripgrep` | Telescope live grep |
+| **fd** | `brew install fd` / `apt install fd-find` | Faster Telescope file finding |
+| **lazygit** | `brew install lazygit` / `apt install lazygit` | LazyGit UI |
+| **tree-sitter-cli** | `cargo install tree-sitter-cli` | Compile Treesitter parsers (requires Rust via rustup) |
+| **node / npm** | `brew install node` / `apt install nodejs npm` | Prettier, eslint_d, LSP servers |
 
 ---
 

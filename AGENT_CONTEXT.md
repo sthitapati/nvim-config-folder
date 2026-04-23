@@ -4,8 +4,8 @@ Personal Neovim configuration. Design goals: **lightweight, fast, not bloated**.
 
 ## Environment
 
-- Neovim: 0.11.6 (Homebrew, Apple Silicon)
-- OS: macOS (Darwin 25.3.0)
+- Neovim: 0.11.6 (Homebrew, Apple Silicon / Linux)
+- OS: macOS (Darwin 25.3.0) and Linux (Debian/Fedora-based)
 - Plugin manager: lazy.nvim (stable branch)
 - Leader key: `<Space>`
 
@@ -65,6 +65,9 @@ Personal Neovim configuration. Design goals: **lightweight, fast, not bloated**.
 | plenary.nvim | Lua utilities (dep) | OK |
 | vim-tmux-navigator | Tmux/split navigation | OK |
 | tokyonight.nvim | Colorscheme | OK |
+| catppuccin | Colorscheme (alt) | OK (lazy) |
+| kanagawa.nvim | Colorscheme (alt) | OK (lazy) |
+| rose-pine | Colorscheme (alt) | OK (lazy) |
 | dressing.nvim | Better input/select UI | OK |
 | which-key.nvim | Keymap guide | OK |
 | lualine.nvim | Statusline | OK |
@@ -102,7 +105,7 @@ Personal Neovim configuration. Design goals: **lightweight, fast, not bloated**.
 | toggleterm.nvim | Integrated terminal | OK |
 | auto-session | Session management | OK (minor config fixes needed) |
 | alpha-nvim | Dashboard | OK |
-| vim-maximizer | Window maximize | CANDIDATE FOR REMOVAL (replace with inline Lua) |
+| vim-maximizer | Window maximize | REMOVED — replaced with inline Lua toggle in keymaps |
 
 ## LSP Configuration
 
@@ -187,6 +190,7 @@ settings = {
 
 ### P9 — Tooling
 - [ ] `brew install fd` (telescope uses ripgrep fallback without it)
+- [ ] `cargo install tree-sitter-cli` (required to compile treesitter parsers; install Rust via `rustup` first if needed)
 
 ## Key Keymaps Reference
 
@@ -200,6 +204,7 @@ settings = {
 | `<leader>j` | Toggle terminal |
 | `<leader>mp` | Format buffer |
 | `<leader>l` | Trigger linter |
+| `<leader>sm` | Toggle maximize/restore split |
 | `<leader>wr` / `<leader>ws` | Session restore / save |
 | `gd` / `gR` / `gi` / `gt` | LSP definitions/refs/impl/types |
 | `<leader>ca` | Code actions |

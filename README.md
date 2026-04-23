@@ -25,6 +25,7 @@ Before installing this configuration, you need to have the following installed o
 - **`nodejs`**
 - **`ripgrep`** (critical for `telescope.nvim` to function efficiently)
 - **`lazygit`**
+- **`cargo`** / **`tree-sitter-cli`** (required to compile Treesitter parsers — install Rust via [rustup](https://rustup.rs) first, then `cargo install tree-sitter-cli`)
 - And obviously don't forget to install neovim 😜
 
 #### For Linux 🐧
@@ -36,17 +37,23 @@ Follow the instructions specific to your Debian-based or Fedora-based distributi
   ```bash
   sudo apt update
   sudo apt install -y npm nodejs ripgrep lazygit
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  cargo install tree-sitter-cli
   ```
 
 - **Fedora (using `dnf`)**
   ```bash
   sudo dnf install -y npm nodejs ripgrep lazygit
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  cargo install tree-sitter-cli
   ```
 
 #### For macOS 🍎
 
 ```bash
 brew install node npm ripgrep lazygit
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install tree-sitter-cli
 ```
 
 ### 2. ⚡ Installation Command
