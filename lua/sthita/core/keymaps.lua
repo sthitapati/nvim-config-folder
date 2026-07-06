@@ -19,6 +19,12 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "go to next tab"})
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "go to previous tab"})
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab"})
 
+-- diagnostics
+keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
+keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+
 -- theme switcher
 keymap.set("n", "<leader>th", "<cmd>Themery<CR>", { desc = "Open theme switcher" })
 
